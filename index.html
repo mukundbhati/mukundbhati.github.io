@@ -93,6 +93,7 @@ nav a:hover{color:#fff}
 }
 .project:hover .mock{transform:scale(1.05)}
 .project:hover .mock{transform:scale(1.04)}
+  
 
 ul{margin-top:10px;padding-left:18px;color:#aab6c5}
 
@@ -103,6 +104,59 @@ footer{text-align:center;padding:30px;border-top:1px solid rgba(255,255,255,0.08
 .spinner{width:50px;height:50px;border:3px solid rgba(255,255,255,0.1);border-top:3px solid #9ecbff;border-radius:50%;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .hide-loader{opacity:0;visibility:hidden}
+  @media (max-width: 768px){
+
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .hero-right{
+    margin-top:30px;
+    height:250px;
+  }
+
+  .btns{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .btns a{
+    width:80%;
+    padding:14px;
+    text-align:center;
+  }
+
+  .project{
+    grid-template-columns:1fr;
+  }
+
+  .mock{
+    height:220px;
+  }
+
+  h1{
+    font-size:2.2rem;
+  }
+  nav{
+    padding:12px 5%;
+  }
+  nav a{
+    font-size:0.9rem;
+  }
+  section{
+    padding:80px 5%;
+  }
+}
+  body{
+  overflow-x:hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btns a{
+  -webkit-tap-highlight-color: transparent;
+}
+  
 </style>
 </head>
 <body>
@@ -137,22 +191,18 @@ footer{text-align:center;padding:30px;border-top:1px solid rgba(255,255,255,0.08
 
   <svg class="flow" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid meet">
 
-    <!-- static lines -->
     <path class="link" d="M60 220 C180 220, 240 120, 320 120" />
     <path class="link" d="M320 120 C420 120, 460 240, 560 240" />
 
-    <!-- animated lines -->
     <path class="pulse" d="M60 220 C180 220, 240 120, 320 120" />
     <path class="pulse" d="M320 120 C420 120, 460 240, 560 240" />
 
-    <!-- nodes -->
     <circle class="node" cx="60" cy="220" r="6" />
     <circle class="node" cx="320" cy="120" r="6" />
     <circle class="node" cx="560" cy="240" r="6" />
 
   </svg>
 
-  <!-- ADD THESE LABELS -->
   <div class="label l1">Client</div>
   <div class="label l2">API</div>
   <div class="label l3">Service</div>
