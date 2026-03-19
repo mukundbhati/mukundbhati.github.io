@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mukund Singh Bhati | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#0b1f3a;color:#e6edf3;overflow-x:hidden}
+
+.cursor{position:fixed;width:280px;height:280px;background:radial-gradient(circle,rgba(158,203,255,0.12),transparent 60%);pointer-events:none;transform:translate(-50%,-50%);z-index:0}
+
+body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:40px 40px;mask-image:radial-gradient(circle at center, black 40%, transparent 100%);z-index:-1}
+
+section{padding:110px 10%}
+h1,h2{font-weight:600}
+p{color:#aab6c5}
+
+nav{position:fixed;top:0;width:100%;padding:15px 10%;display:flex;justify-content:space-between;backdrop-filter:blur(14px);background:rgba(11,31,58,0.6);z-index:1000}
+
+/* creative logo */
+nav .logo{
+  font-weight:600;
+  letter-spacing:1px;
+  background:linear-gradient(90deg,#9ecbff,#ffffff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+nav a{color:#aaa;margin-left:20px;text-decoration:none;transition:.3s;position:relative}
+nav a::after{content:"";position:absolute;width:0;height:2px;background:#9ecbff;left:0;bottom:-4px;transition:.3s}
+nav a:hover::after{width:100%}
+nav a:hover{color:#fff}
+
+.hero{height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px}
+.hero h1{font-size:3.2rem;background:linear-gradient(90deg,#fff,#9ecbff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.typing{color:#9ecbff;margin:15px 0}
+.hero p{margin-bottom:25px}
+
+.hero-right{height:360px;border-radius:16px;background:linear-gradient(135deg,#1a3c6e,#0b1f3a);border:1px solid rgba(255,255,255,0.1);position:relative;overflow:hidden}
+.label{
+  position:absolute;
+  font-size:0.8rem;
+  color:#9ecbff;
+  opacity:0.9;
+  pointer-events:none;
+}
+
+.l1{
+  top: 65%;
+  left:8%;
+}
+
+.l2{
+  top:25%;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.l3{
+  top:68%;
+  right:8%;
+}
+.flow{position:absolute;inset:0}
+.node{fill:#9ecbff}
+.link{stroke:#2a5aa0;stroke-width:2;stroke-dasharray:6 6}
+.pulse{stroke:#9ecbff;stroke-width:3;fill:none;stroke-dasharray:8 200;animation:dash 3s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-220}}
+
+.btns{display:flex;gap:14px;margin-top:10px}
+.btns a{padding:12px 22px;border-radius:8px;border:1px solid #1a3c6e;color:#fff;text-decoration:none;transition:.3s}
+.btns a:hover{background:#1a3c6e;transform:translateY(-3px);box-shadow:0 10px 25px rgba(26,60,110,0.4)}
+
+.fade{opacity:0;transform:translateY(60px) scale(.98);filter:blur(10px);transition:.8s ease}
+.fade.active{opacity:1;transform:translateY(0);filter:blur(0)}
+
+.card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;overflow:hidden;transition:.3s}
+.card:hover{transform:scale(1.02)}
+
+.project{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;padding:25px;margin-top:30px;align-items:center}
+
+/* FULL SIZE IMAGES */
+.mock{
+  width:100%;
+  height:380px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.1);
+  transition:.4s ease;
+}
+.project:hover .mock{transform:scale(1.05)}
+.project:hover .mock{transform:scale(1.04)}
+
+ul{margin-top:10px;padding-left:18px;color:#aab6c5}
+
+.divider{height:1px;background:rgba(255,255,255,0.08);margin:70px 0}
+footer{text-align:center;padding:30px;border-top:1px solid rgba(255,255,255,0.08);color:#8899aa}
+
+#loader{position:fixed;inset:0;background:#0b1f3a;display:flex;align-items:center;justify-content:center;z-index:2000;transition:.6s}
+.spinner{width:50px;height:50px;border:3px solid rgba(255,255,255,0.1);border-top:3px solid #9ecbff;border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hide-loader{opacity:0;visibility:hidden}
+</style>
+</head>
+<body>
+
+<div id="loader"><div class="spinner"></div></div>
+<div class="cursor" id="cursor"></div>
+
+<nav>
+  <div class="logo">&lt;/Mukund.dev&gt;</div>
+  <div>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero fade">
+  <div>
+    <h1>Mukund Singh Bhati</h1>
+    <div class="typing" id="typing"></div>
+    <p>Full Stack Developer building practical and scalable applications.</p>
+    <div class="btns">
+      <a href="#projects">View Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="resume.pdf" download>Download Resume</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+
+  <svg class="flow" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid meet">
+
+    <!-- static lines -->
+    <path class="link" d="M60 220 C180 220, 240 120, 320 120" />
+    <path class="link" d="M320 120 C420 120, 460 240, 560 240" />
+
+    <!-- animated lines -->
+    <path class="pulse" d="M60 220 C180 220, 240 120, 320 120" />
+    <path class="pulse" d="M320 120 C420 120, 460 240, 560 240" />
+
+    <!-- nodes -->
+    <circle class="node" cx="60" cy="220" r="6" />
+    <circle class="node" cx="320" cy="120" r="6" />
+    <circle class="node" cx="560" cy="240" r="6" />
+
+  </svg>
+
+  <!-- ADD THESE LABELS -->
+  <div class="label l1">Client</div>
+  <div class="label l2">API</div>
+  <div class="label l3">Service</div>
+
+</div>
+</section>
+
+<section id="about" class="fade">
+  <h2>About</h2>
+  <p>
+    I am a full stack developer focused on building practical, real-world applications.
+    I enjoy working on backend systems, APIs, and AI-driven solutions that solve actual problems.
+    My approach is simple: keep systems clean, scalable, and efficient.
+    Currently exploring deeper integration of AI into everyday tools.
+  </p>
+</section>
+
+<div class="divider"></div>
+
+<section id="projects" class="fade">
+  <h2>Projects</h2>
+
+  <div class="project card">
+    <img src="assets/images/vani.png" class="mock" />
+    <div>
+      <h3>VANI</h3>
+      <p>Voice assistant using local LLM</p>
+      <ul>
+        <li>Offline AI assistant using local models</li>
+        <li>Voice-to-command interaction system</li>
+        <li>Fast response with minimal latency</li>
+        <li>Privacy-focused architecture</li>
+      </ul>
+      <a href="https://github.com/mukundbhati/VANI">GitHub</a>
+    </div>
+  </div>
+
+  <div class="project card">
+    <img src="assets/images/scanspense.png" class="mock" />
+    <div>
+      <h3>ScanSpense</h3>
+      <p>Expense tracker with OCR</p>
+      <ul>
+        <li>Automatic receipt scanning using OCR</li>
+        <li>Real-time expense categorization</li>
+        <li>Dashboard with spending insights</li>
+        <li>Reduces manual expense tracking effort</li>
+      </ul>
+      <a href="https://github.com/mukundbhati/scanspense">GitHub</a>
+    </div>
+  </div>
+
+  <div class="project card">
+    <img src="assets/images/campusmind.png" class="mock" />
+    <div>
+      <h3>CampusMind</h3>
+      <p>AI Enabled College ERP & Academic Assistant</p>
+      <ul>
+        <li>Centralized academic management system</li>
+        <li>AI-powered student assistance</li>
+        <li>Automates attendance & notifications</li>
+        <li>Improves academic workflow efficiency</li>
+      </ul>
+      <a href="https://github.com/mukundbhati/CampusMind-AI">GitHub</a>
+    </div>
+  </div>
+
+</section>
+
+<div class="divider"></div>
+
+<section id="contact" class="fade">
+  <h2>Contact</h2>
+  <p>Email: mukund.singh.bhati@gmail.com</p>
+  <p><a href="https://github.com/mukundbhati" target="_blank">GitHub</a></p>
+  <p><a href="https://www.linkedin.com/in/mukund-singh-bhati-50626324b" target="_blank">LinkedIn</a></p>
+</section>
+
+<footer>
+  <p>Built by Mukund Singh Bhati</p>
+  <p style="margin-top:8px;font-size:.9rem;color:#aab6c5;">Still learning, still growing.</p>
+</footer>
+
+<script>
+document.addEventListener("mousemove",e=>{const c=document.getElementById("cursor");c.style.left=e.clientX+"px";c.style.top=e.clientY+"px"});
+
+const texts=["Backend Systems","REST APIs","Building real applications"];
+let i=0,j=0,isDeleting=false;
+function type(){let current=texts[i];document.getElementById("typing").textContent=current.substring(0,j);if(!isDeleting&&j<current.length)j++;else if(isDeleting&&j>0)j--;else{isDeleting=!isDeleting;if(!isDeleting)i=(i+1)%texts.length}setTimeout(type,isDeleting?50:100)}type();
+
+const els=document.querySelectorAll('.fade');
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active')})},{threshold:0.2});
+els.forEach(el=>obs.observe(el));
+
+window.addEventListener("load",()=>{document.getElementById("loader").classList.add("hide-loader")});
+</script>
+
+</body>
+</html>
